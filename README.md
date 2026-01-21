@@ -1,1 +1,2 @@
 # Netflix
+Avec la ressource R4.10,  nous allons essayer de reproduire le site de streaming Netflix avec les compétences qu'on aura vu dans la ressource. Je pense que l'objectif sera de proposer une interface qui propose un catalogue de plusieurs film et/ou série coté front et avec une gestion des abonnements des différents utilisateurs coté serveur 
