@@ -1,7 +1,17 @@
 @import "tailwindcss";
 
 @theme {
- --color-primary: #e50914;
- --color-primary-dark: #b20710;
- --font-sans: 'Inter', system-ui, sans-serif;
+  --color-primary: #e50914;
+  --color-primary-dark: #b20710;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* Masquer la scrollbar pour le carousel */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
