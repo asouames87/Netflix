@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../common/Button';
 
-function MovieCard({ movie }) {
   const genreColors = {
     'Action': 'bg-red-500',
     'Science-Fiction': 'bg-purple-500',
     'Thriller': 'bg-gray-500',
     'Comédie': 'bg-yellow-500'
   };
-  
+
+function MovieCard({ movie }) {
+  const {likes, setLike} = useState(movie.likes);
+  const {isLiked, setIsLiked} = useState(false);
+
+  const HandleClick = () => {
+    if (isLiked){
+      setLike(likes -1)
+    }else{
+       setLike(likes + 1)
+    }
+    setIsLiked(false)
+  }
   return (
+    <div>
+     <h3>{movie.title}</h3>
+    <button className={`px-4 py-2 rounded ${ isLiked ? 'bg-red-500' : 'bg-gray-500'`}>
+      {isLiked ? '❤' : '🤍'} {likes} likes
+    </button>
+    </div>
     <div className="group relative overflow-hidden rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105 min-w-[200px]">
       <div className="relative aspect-[2/3]">
         <img
@@ -45,5 +62,4 @@ function MovieCard({ movie }) {
     </div>
   );
 }
-
 export default MovieCard;
