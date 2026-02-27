@@ -1,34 +1,63 @@
-import React, { useState, useEffect } from 'react';
-import SearchBar from '../common/SearchBar';
+import { NavLink } from 'react-router-dom';
+import SearchBar from '../common/SearchBar'; // UN SEUL IMPORT - depuis common
+import CartButton from '../common/CartButton';
+import { useState } from 'react';
+import moviesData from '../../data/movies.json';
 
 function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 0);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  
+  const [movies] = useState(moviesData);
+
+  const handleSearch = (movie) => {
+    // Naviguer vers la page du film
+    window.location.href = `/movie/${movie.id}`;
+  };
+
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
-        isScrolled ? 'bg-black' : 'bg-gradient-to-b from-black/80 to-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+    <nav className="fixed w-full z-50 bg-black py-4">
+      <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center space-x-8">
-          <h1 className="text-red-600 text-3xl font-bold cursor-pointer">NETFLIX</h1>
-          <ul className="hidden md:flex space-x-6 text-gray-300">
-            <li className="hover:text-white cursor-pointer">Accueil</li>
-            <li className="hover:text-white cursor-pointer">Series</li>
-            <li className="hover:text-white cursor-pointer">Films</li>
+          <NavLink to="/" className="text-primary text-3xl font-bold tracking-tight">
+            NETFLIX
+          </NavLink>
+          <ul className="hidden md:flex space-x-6">
+            <li>
+              <NavLink 
+                to="/" 
+                className={({ isActive }) => 
+                  isActive ? 'text-primary font-bold' : 'text-white hover:text-gray-300'
+                }
+              >
+                Accueil
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/my-rentals" 
+                className={({ isActive }) => 
+                  isActive ? 'text-primary font-bold' : 'text-white hover:text-gray-300'
+                }
+              >
+                Mes locations
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/login" 
+                className={({ isActive }) => 
+                  isActive ? 'text-primary font-bold' : 'text-white hover:text-gray-300'
+                }
+              >
+                Connexion
+              </NavLink>
+            </li>
           </ul>
         </div>
-        <div className="flex items-center space-x-4 text-white">
-          <SearchBar />
-          <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center font-bold cursor-pointer">
-            U
+
+        <div className="flex items-center space-x-4">
+          <SearchBar movies={movies} onSearch={handleSearch} />
+          <CartButton />
+          <div className="w-8 h-8 bg-primary rounded flex items-center justify-center cursor-pointer hover:bg-primary-dark">
+            <span className="text-sm font-bold text-white">U</span>
           </div>
         </div>
       </div>

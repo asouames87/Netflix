@@ -1,23 +1,22 @@
-import React from 'react';
-import Navbar from '../components/layout/Navbar';
-import MovieHero from '../components/movies/MovieHero';
-import MovieCarousel from '../components/movies/MovieCarousel';
-import Footer from '../components/layout/Footer';
+import { useState } from 'react';
 import moviesData from '../data/movies.json';
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+import MovieHero from '../components/movies/MovieHero';
+import MovieFilter from '../components/movies/MovieFilter';
+import MovieList from '../components/movies/MovieList';
 
 function Home() {
-  const featuredMovie = moviesData[0];
-  const actionMovies = moviesData.filter((m) => m.genre === 'Action');
-  const scifiMovies = moviesData.filter((m) => m.genre === 'Science-Fiction');
-  
+  const [allMovies] = useState(moviesData);
+  const [filteredMovies, setFilteredMovies] = useState(moviesData);
+
   return (
-    <div className="bg-black min-h-screen text-white font-sans">
+    <div className="bg-black min-h-screen">
       <Navbar />
-      <MovieHero movie={featuredMovie} />
-      <div className="-mt-32 relative z-10 space-y-4 pb-12">
-        <MovieCarousel title="Tendances Actuelles" movies={moviesData} />
-        <MovieCarousel title="Action & Aventure" movies={actionMovies} />
-        <MovieCarousel title="Science-Fiction" movies={scifiMovies} />
+      <MovieHero movie={allMovies[0]} />
+      <div className="container mx-auto">
+        <MovieFilter movies={allMovies} onFilter={setFilteredMovies} />
+        <MovieList title="Films disponibles" movies={filteredMovies} />
       </div>
       <Footer />
     </div>

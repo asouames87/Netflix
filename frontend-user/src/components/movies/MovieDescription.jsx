@@ -9,10 +9,13 @@ function MovieDescription({ description }) {
 
     return (
     <div>
-        <p className={isExpanded ? '' : 'line-clamp-2'}>{description} </p>
-        <button>
-            {isExpanded ? 'Voir moins' : 'Voir plus'}
-            </button>
+      <p className={isExpanded ? '' : 'line-clamp-2'}>{description}</p>
+      <button 
+        onClick={ToggleExpanded}
+        className="text-primary hover:underline mt-2"
+      >
+        {isExpanded ? 'Voir moins' : 'Voir plus'}
+      </button>
     </div>
  );
 }

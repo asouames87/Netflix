@@ -28,7 +28,6 @@ function MovieCarousel({ title, movies }) {
     <section className="py-8 relative group px-4">
       <h2 className="text-2xl font-bold text-white mb-4">{title}</h2>
       
-      {/* Bouton Gauche */}
       {canScrollLeft && (
         <button
           onClick={() => scroll('left')}
@@ -38,7 +37,6 @@ function MovieCarousel({ title, movies }) {
         </button>
       )}
       
-      {/* Container */}
       <div
         ref={scrollContainerRef}
         className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
@@ -51,7 +49,6 @@ function MovieCarousel({ title, movies }) {
         ))}
       </div>
       
-      {/* Bouton Droite */}
       {canScrollRight && (
         <button
           onClick={() => scroll('right')}
