@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import SearchBar from '../common/SearchBar'; // UN SEUL IMPORT - depuis common
+import SearchBar from '../common/SearchBar'; 
 import CartButton from '../common/CartButton';
 import { useState } from 'react';
 import moviesData from '../../data/movies.json';
@@ -8,7 +8,6 @@ function Navbar() {
   const [movies] = useState(moviesData);
 
   const handleSearch = (movie) => {
-    // Naviguer vers la page du film
     window.location.href = `/movie/${movie.id}`;
   };
 
