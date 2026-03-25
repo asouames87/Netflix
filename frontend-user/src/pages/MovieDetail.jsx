@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import moviesData from '../data/movies.json';
+import moviesData from '../../../data/movies.json';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import Button from '../components/common/Button';
 import Breadcrumb from '../components/common/Breadcrumb';
+
 
 function MovieDetail() {
   const { id } = useParams();

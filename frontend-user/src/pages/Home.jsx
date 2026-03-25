@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import moviesData from '../data/movies.json';
+import moviesData from '../../../data/movies.json';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import MovieHero from '../components/movies/MovieHero';

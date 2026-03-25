@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import SearchBar from '../common/SearchBar'; 
 import CartButton from '../common/CartButton';
 import { useState } from 'react';
-import moviesData from '../../data/movies.json';
+import moviesData from '../../../../data/movies.json';
 
 function Navbar() {
   const [movies] = useState(moviesData);
